@@ -19,28 +19,6 @@ form.addEventListener("submit", (e) => {
     }
   });
 
-//   Function to Add a Task
-// function addTodo(task, completed = false) {
-//     const li = document.createElement("li");
-//     li.textContent = task;
-  
-//     if (completed) li.classList.add("completed");
-  
-//     li.addEventListener("click", () => {
-//       li.classList.toggle("completed");
-//       saveTodos();
-//     });
-  
-//     li.addEventListener("contextmenu", (e) => {
-//       e.preventDefault();
-//       li.remove();
-//       saveTodos();
-//     });
-  
-//     list.appendChild(li);
-//     saveTodos();
-//   }
-
 //   Function to Add a Task with Delete Button and Edit Feature
 // This function creates a new list item for the task and appends it to the list
 function addTodo(task, completed = false) {
@@ -52,21 +30,21 @@ function addTodo(task, completed = false) {
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "❌";
-  deleteBtn.style.background = "transparent";
+  deleteBtn.className = "delete-btn";
+  deleteBtn.style.background = "none";
   deleteBtn.style.border = "none";
   deleteBtn.style.cursor = "pointer";
   deleteBtn.style.fontSize = "16px";
+  deleteBtn.style.marginLeft = "10px";
 
-  // Toggle completed when clicking the task text
-  span.addEventListener("click", () => {
-    li.classList.toggle("completed");
-    saveTodos();
-  });
+  span.addEventListener("contextmenu", (e) => {
+    e.preventDefault(); // prevents right-click from doing anything
+  });  
 
   // Delete task on clicking ❌
   deleteBtn.addEventListener("click", () => {
-    li.remove();
-    saveTodos();
+    li.remove(); // removes from the page
+    saveTodos();  // updates localStorage so it's gone permanently
   });
 
   // Make editable on double-click
@@ -88,6 +66,7 @@ function addTodo(task, completed = false) {
     });
   });
 
+   // If task is completed
   if (completed) li.classList.add("completed");
 
   li.appendChild(span);
@@ -102,7 +81,7 @@ function saveTodos() {
     const todos = [];
     document.querySelectorAll("li").forEach((li) => {
       todos.push({
-        text: li.textContent,
+        text: li.querySelector("span").textContent,
         completed: li.classList.contains("completed"),
       });
     });
@@ -117,43 +96,43 @@ function clearAll() {
   }
 }
 
-//  Function to Filter Tasks
-function filterTasks(filter) {
-    document.querySelectorAll("li").forEach((li) => {
-      switch (filter) {
-        case "all":
-          li.style.display = "flex";
-          break;
-        case "active":
-          li.style.display = li.classList.contains("completed") ? "none" : "flex";
-          break;
-        case "completed":
-          li.style.display = li.classList.contains("completed") ? "flex" : "none";
-          break;
-      }
-    });
-  }
-  
-// // Make Task Text Editable
-//   li.addEventListener("dblclick", () => {
-//     const input = document.createElement("input");
-//     input.type = "text";
-//     input.value = li.textContent;
-//     li.textContent = "";
-//     li.appendChild(input);
-//     input.focus();
-  
-//     input.addEventListener("blur", () => {
-//       li.textContent = input.value;
-//       saveTodos();
-//     });
-  
-//     input.addEventListener("keydown", (e) => {
-//       if (e.key === "Enter") {
-//         input.blur();
+// //  Function to Filter Tasks
+// function filterTasks(filter) {
+//     document.querySelectorAll("li").forEach((li) => {
+//       switch (filter) {
+//         case "all":
+//           li.style.display = "flex";
+//           break;
+//         case "active":
+//           li.style.display = li.classList.contains("completed") ? "none" : "flex";
+//           break;
+//         case "completed":
+//           li.style.display = li.classList.contains("completed") ? "flex" : "none";
+//           break;
 //       }
 //     });
-//   });
+//   }
+  
+// Make Task Text Editable
+  // li.addEventListener("dblclick", () => {
+  //   const input = document.createElement("input");
+  //   input.type = "text";
+  //   input.value = li.textContent;
+  //   li.textContent = "";
+  //   li.appendChild(input);
+  //   input.focus();
+  
+  //   input.addEventListener("blur", () => {
+  //     li.textContent = input.value;
+  //     saveTodos();
+  //   });
+  
+  //   input.addEventListener("keydown", (e) => {
+  //     if (e.key === "Enter") {
+  //       input.blur();
+  //     }
+  //   });
+  // });
   
 
   

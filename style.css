@@ -1,85 +1,110 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    margin: 0;
-    padding-top: 50px;
-  }
-  
-  .todo-container {
-    background: white;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px 15px;
-    border: none;
-    background: #4caf50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    background: #eee;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  li.completed {
-    text-decoration: line-through;
-    opacity: 0.6;
-  }
-  .filters {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-  }
-  
-  .filters button {
-    flex: 1;
-    margin: 0 5px;
-    padding: 8px;
-    /* background: #ddd; */
-    background: #4caf50;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .filters button:hover {
-    background: #73d476;
-  }
-    
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+  padding-top: 50px;
+}
+
+.todo-container {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #4caf50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #eee;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.filters button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 8px;
+  /* background: #ddd; */
+  background: #4caf50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background: #73d476;
+}
+
+/* Hide delete button by default */
+.delete-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: red;
+  font-size: 3px;
+  cursor: pointer;
+}
+
+/* Show delete button only when hovering over the task  */
+li:hover .delete-btn {
+  display: inline;
+}
+
+li {
+  background: #eee;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+li:hover {
+  background: #ddd;
+}
